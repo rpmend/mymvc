@@ -9,7 +9,7 @@ class Pages extends Controller
     {
 
         $data = [
-            'title' => 'MyMVC'
+            'title' => SITENAME
         ];
 
         $this->view('pages/index', $data);

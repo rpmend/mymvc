@@ -1,6 +1,9 @@
 <?php
 
+/*
+ * This is where the application starts as definined in the .htaccess files.
+ */ 
+
 require_once '../app/bootstrap.php';
 
-// Init Core Librariy
-$init = new Core;
+$router = new Router();

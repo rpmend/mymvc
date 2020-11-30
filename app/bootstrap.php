@@ -8,7 +8,16 @@
 
 require_once 'config/config.php';
 
-// Autoload classes in the libraries directory
+// Autoload classes in the libraries and models directory
 spl_autoload_register(function ($className) {
-    require_once 'libraries/' . $className . '.php';
+    if (file_exists('../app/libraries/' . $className . '.php')) {
+        require_once 'libraries/' . $className . '.php';
+    }
+
+    if (file_exists('../app/models/' . $className . '.php')) {
+        require_once 'models/' . $className . '.php';
+    }    
 });
+
+// Load helpers
+require_once 'helpers/Messages.php';

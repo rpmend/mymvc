@@ -14,6 +14,7 @@
  * checks if a file in the app/views directory with that name 
  * really exists and loads it.
  * If the file does not exists, it then ends the application.
+ * 
  */
 
 class Controller
@@ -35,5 +36,10 @@ class Controller
         } else {
             die('View does not exists.');
         }
+    }
+
+    public function redirect($url)
+    {
+        header("Location: " . URLROOT . "/" . $url); 
     }
 }

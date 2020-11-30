@@ -2,10 +2,11 @@
 
 /* 
  * This is the router of the application.
- * As soon as this class is instantiated,
- * it looks at the url,
- * pulling out whats needs to be pulled out and 
- * loading what needs to be loaded based on that.
+ * 
+ * This class is instanciated at the start of the application.
+ * It is responsible for interpreting the url and calling the
+ * requested controller/method based on that.
+ * 
  */
 
 class Router
@@ -33,6 +34,13 @@ class Router
             unset($url[0]);
         }
 
+        // Check Authentication
+        if ($this->controller != 'Pages') {
+            if (!isset($_SESSION["userLoggedIn"])) {
+                header("Location: ../");
+            }
+        }
+
         // Require the controller
         require_once '../app/controllers/' . $this->controller . '.php';
 
@@ -55,3 +63,4 @@ class Router
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
 }
+
